@@ -77,3 +77,13 @@
     font-size: 28px;
     margin-top: -6px;
 }
+.weather{
+    display: none;
+}
+.error{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: 15px;
+    display: none;
+}
