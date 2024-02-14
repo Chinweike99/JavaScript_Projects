@@ -12,7 +12,7 @@ const questions = [
         question: "Which is the smallest country in the world?",
         answers: [
             { text: "India", correct: false},
-            { text: "China", correct: true},
+            { text: "China", correct: false},
             { text: "Namibia", correct: false},
             { text: "Vatican City", correct: true},
         ]
@@ -21,7 +21,7 @@ const questions = [
         question: "Which is the largest desert in the world?",
         answers: [
             { text: "Kalahari", correct: false},
-            { text: "Sahara", correct: true},
+            { text: "Sahara", correct: false},
             { text: "Gobi", correct: false},
             { text: "Antarctica", correct: true},
         ]
@@ -30,7 +30,7 @@ const questions = [
         question: "Which is the smallest continent in the world?",
         answers: [
             { text: "Asia", correct: false},
-            { text: "Europe", correct: true},
+            { text: "Europe", correct: false},
             { text: "Africa", correct: false},
             { text: "Australia", correct: true},
         ]
@@ -81,6 +81,48 @@ function resetState(){
 // Function to select answer
 function selectAnswer(e){
     const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if(isCorrect){
+        selectedBtn.classList.add("correct");
+        score++; // increment the score if correct
+    }
+    else{
+        selectedBtn.classList.add("incorrect");
+    }
+    // disabling other selection if an option is already chonsen
+    Array.from(quizAnswer.children).forEach(button => {
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    });
+    nextBtn.style.display = "block";
 }
+
+
+// Function to show score
+function showScore(){
+    resetState();
+    quizQuestion.innerHTML = `Your score is ${score} / ${questions.length}`;
+    nextBtn.innerHTML = "Play again";
+    nextBtn.style.display = "block";
+}
+
+// Next question function
+function handleNextButton(){
+    questionIndex++;
+    if (questionIndex < questions.length){
+        showQuestion();
+    }else{
+        showScore();
+    }
+}
+nextBtn.addEventListener("click", ()=> {
+    if (questionIndex < questions.length){
+        handleNextButton();
+    }else{
+        startQuiz();
+    }
+});
 
 startQuiz();
