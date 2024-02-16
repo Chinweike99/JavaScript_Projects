@@ -3,7 +3,6 @@ const createBtn = document.querySelector(".btn");
 let notes = document.querySelectorAll(".input-box");
 
 // Fucntion Show notes
-
 function showNotes(){
     notesContainer.innerHTML = localStorage.getItem("notes");
 }
