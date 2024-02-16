@@ -66,7 +66,7 @@ function showQuestion(){
             button.dataset.correct = answer.correct;
         }
         button.addEventListener("click", selectAnswer);
-    })
+    });
 }
 
 // Function to remove all Previous answers
