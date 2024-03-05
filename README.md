@@ -1,0 +1,1 @@
+JavaScript_project file would contain basically projects done with HTML, CSS and JavaScript and also JS project ideas!!.
