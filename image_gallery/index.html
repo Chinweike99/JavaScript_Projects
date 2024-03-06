@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale-1=1.0">
+        <title>Horizontal Scroll</title>
+        <link rel="stylesheet" href="design.css">
+        <script src="https://kit.fontawesome.com/9b776a6ba6.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="gallery-wrap">
+            <img src="images/circle-chevron-left-solid.svg" alt="" id="backBtn">
+            <div class="gallery">
+                <div>
+                    <span><img src="images/imag1.jpg"></span>
+                    <span><img src="images/imag2.jpg"></span>
+                    <span><img src="images/imag3.jpg"></span>
+                </div>
+                <div>
+                    <span><img src="images/imag4.jpg"></span>
+                    <span><img src="images/imag5.jpg"></span>
+                    <span><img src="images/imag6.jpg"></span>
+                    
+                </div>
+            </div>
+            <img src="images/circle-chevron-right-solid.svg" alt="" id="nextBtn">
+        </div>
+        
+        <script>
+            let scrollCont = document.querySelector(".gallery")
+            let backBtn = document.getElementById("backBtn");
+            let nextBtn = document.getElementById("nextBtn");
+
+            scrollCont.addEventListener("wheel", (evt) => {
+                evt.preventDefault();
+                scrollCont.scrollLeft += evt.deltaY;
+                scrollCont.style.scrollBehavior = "auto";
+            });
+
+            nextBtn.addEventListener("click", ()=>{
+                scrollCont.style.scrollBehavior = "smooth";
+                scrollCont.scrollLeft += 300;
+            });
+
+            backBtn.addEventListener("click", ()=>{
+                scrollCont.style.scrollBehavior = "smooth";
+                scrollCont.scrollLeft -= 300;
+            });
+
+
+        </script>
+    </body>
+</html>
