@@ -21,15 +21,15 @@
                         <span id="phone-error"></span>
                     </div>
                     <div class="detail">
-                        Email id <input class="mail" type="text" id="email" placeholder="Email address">
+                        Email id <input class="mail" type="text" id="email" placeholder="Email address" onkeyup="validateEmail()">
                         <span id="email-error"></span>
                     </div>
                     <div class="detail">
-                        Your Message <textarea name="message" id="message" rows="5" placeholder="Type your message"></textarea>
+                        Your Message <textarea name="message" id="message" rows="5" placeholder="Type your message" onkeyup="validateMessage()"></textarea>
                         <span id="message-error"></span>
                     </div>
                 </div>
-                <button onclick="Validate()">Submit</button>
+                <button onclick="return Validate()">Submit</button>
                 <span id="submit-error"></span>
             </div>
         </form>

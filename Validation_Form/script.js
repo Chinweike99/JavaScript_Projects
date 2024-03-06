@@ -1,6 +1,4 @@
 
-var emailId = document.getElementById("email");
-var addMessage = document.getElementById("message");
 var submitBtn = document.getElementById("button");
 
 
@@ -38,7 +36,7 @@ function validatePhone(){
         phoneError.innerHTML = "Phone number should be 10";
         return false;
     }
-    if (!phoneNo.match(/^[0-9]{10}*$/)){
+    if (!phoneNo.match(/^\d{10}$/)){
         phoneError.innerHTML = "Must be numbers";
         return false;
     }
@@ -46,6 +44,46 @@ function validatePhone(){
     return true;
 }
 
+function validateEmail(){
+    var emailId = document.getElementById("email").value;
+
+    if(emailId.length == 0){
+        emailError.innerHTML = "Email required";
+        return false;
+    }
+    if(!emailId.match(/^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.[a-zA-Z]{2,})+$/)){
+        emailError.innerHTML = "Email Invalid";
+        return false;
+    }
+    emailError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    return true;
+}
 
 
+function validateMessage(){
+    var required = 30;
+    var addMessage = document.getElementById("message").value;
+    var messagelen = required - addMessage.length;
 
+    if(addMessage.length == 0){
+        messageError.innerHTML = "Enter message";
+        return false;
+    }
+    if (messagelen > 0){
+        messageError.innerHTML = messagelen + " more required";
+        return false;
+    }
+    messageError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    return true;
+}
+
+function Validate(){
+    if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage()){
+        submitError.style.display = 'block';
+        submitError.innerHTML = "Fix all errors";
+        setTimeout(function(){
+            submitError.style.display = 'none';
+        }, 1000)
+        return false;
+    }
+}
