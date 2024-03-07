@@ -8,7 +8,7 @@ body{
     background-color: #191919;
 }
 .gallery{
-    width: 900px;
+    width: 950px;
     display: flex;
     overflow-x: scroll;
     border: 2px solid #fff;
@@ -17,7 +17,7 @@ body{
 .gallery div{
     width: 100%;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     padding: 10px;
     flex: none;
