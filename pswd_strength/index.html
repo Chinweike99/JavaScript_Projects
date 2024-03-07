@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Password strength</title>
+        <link rel="stylesheet" href="design.css">
+        <script src="https://kit.fontawesome.com/9b776a6ba6.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="input-box">
+                <input type="email" id="password" placeholder="Password" required>
+                <button type="submit"><img src="right.svg" alt=""></button>
+                <p id="message"> Password is <span id="strength"></span></p>
+            </div>
+            
+
+            <script>
+
+                var pass = document.getElementById("password");
+                var msg = document.getElementById("message");
+                var strength = document.getElementById("strength");
+
+                pass.addEventListener('input', ()=>{
+                    if(pass.value.length > 0){
+                        msg.style.display = "block";
+                    }else{
+                        msg.style.display = "none";
+                    }
+                    if(pass.value.length < 4){
+                        strength.innerHTML = "weak";
+                        pass.style.borderColor = "red";
+                        msg.style.color = "red";
+                    }
+                    else if(pass.value.length >= 4 && pass.value.length < 8){
+                        strength.innerHTML = "medium";
+                        pass.style.borderColor = "yellow";
+                        msg.style.color = "yellow";
+                    }
+                    else if(pass.value.length >= 8){
+                        strength.innerHTML = "strong";
+                        pass.style.borderColor = "green";
+                        msg.style.color = "green";
+                    }
+                })
+
+            </script>
+        </div>
+        
+    </body>
+</html>
