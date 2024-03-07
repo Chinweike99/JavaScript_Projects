@@ -1,0 +1,1 @@
+Mail subscription: having subscribed mail list saved on google sheet.
