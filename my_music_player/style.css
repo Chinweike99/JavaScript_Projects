@@ -130,7 +130,7 @@ button{
     align-items: center;
     display: flex;
     justify-content: center;
-    z-index: 3;
+    z-index: 2;
 }
 .songBox img{
     width: 200px;

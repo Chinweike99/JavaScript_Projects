@@ -21,6 +21,23 @@ const songs = [
     document.getElementById("song4"),
 ];
 
+selectSong.onclick = function(){
+    if(songList.classList.contains("openSong")){
+        songList.classList.add("openSong");
+        barIcon.classList.toggle("rotate");
+    }else{
+        songList.classList.remove("openSong");
+        barIcon.classList.toggle("rotate");
+    }
+}
+for(option of tracks){
+    option.onclick = function(){
+        songPlay.innerHTML = this.textContent;
+        songList.classList.remove("openSong");
+        barIcon.classList.toggle("rotate");
+    }
+}
+
 let currentSong = 0;
 
 function playNextSong(){
@@ -50,11 +67,6 @@ function pausePlay(){
 }
 
 
-// songRange.onchange = function(){
-//     songs[currentSong].play();
-//     songs[currentSong].currentTime = songRange.value;
-// }
-
 songRange.oninput = function(){
     songs[currentSong].currentTime = this.value;
 };
@@ -82,13 +94,6 @@ if(song.play()){
     }, 600)
 }
 
-// Function to rotate hamburger menu and show song list
-selectSong.onclick = function(){
-    //songList.classList.toggle("hide");
-    barIcon.classList.toggle("rotate");
-    barIcon.classList.add("openSong");
-}
-
 // function to show songs onclicking button
 function toggleSongList(){
     if (songList.classList.contains("openSong")){
@@ -107,11 +112,3 @@ function mvBack(){
     }
 }
 
-// Tracks function
-for(option of tracks){
-    option.onclick = function(){
-        songPlay.innerHTML = this.textContent;
-        barIcon.classList.toggle("rotate");
-        songList.classList.remove("openSong");
-    }
-}
